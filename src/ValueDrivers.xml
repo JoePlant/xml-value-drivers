@@ -1,0 +1,40 @@
+<ValueDrivers>
+	<Kpi id='product' name='Production'>
+		<Formula>
+			<Operation type='multiply'>
+				<Kpi id-ref='tph'/>
+				<Driver id-ref='num_equip'/>
+				<Kpi id-ref='NOH'/>
+			</Operation>
+		</Formula>
+		<Kpi id='tph' name='Tonnes per hour'>
+			<Formula>
+				<Operation type='multiply'>
+					<Kpi id-ref='avg_payload'/>
+					<Kpi id-ref='cycles_per_hour'/>
+				</Operation>
+			</Formula>
+			<Kpi id='avg_payload' name='Average Payload'>
+				<Formula>
+					<Operation type='divide'>	
+						<Driver id-ref='capacity'/>
+						<Driver id-ref='fill-factor'/>
+					</Operation>
+				</Formula>
+				<Driver id='capacity' name='Capacity'/>
+				<Driver id='fill-factor' name='Fill Factor'/>
+			</Kpi>
+			<Kpi id='cycles-per-hour' name='Cycles per Hour'>
+				<Formula>
+					<Operation type='divide'>	
+						<Constant id-ref='minutes-per-hour'/>
+						<Driver id-ref='cycle-time'/>
+					</Operation>
+				</Formula>
+			</Kpi>
+		</Kpi>
+		<Driver id='num_equip' name='Number of Equipment'/>
+		<Kpi id='NOH' name='Net Operating Time'>
+		</Kpi>
+	</Kpi>
+</ValueDrivers>
